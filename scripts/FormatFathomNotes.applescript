@@ -14,7 +14,7 @@ on run argv
 	do shell script "mkdir -p " & quoted form of outputFolder
 	
 	-- Build output path: same basename, .md extension
-	set baseName to do shell script "basename " & quoted form of inputPath & " .txt"
+	set baseName to do shell script "basename " & quoted form of inputPath & " .txt | sed -E 's/T[0-9]{6}Z//'"
 	set outputPath to outputFolder & "/" & baseName & ".md"
 	
 	-- Run the Python transformer
