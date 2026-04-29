@@ -8,28 +8,25 @@ Fathom exports meeting summaries as raw text full of markdown timestamp links, i
 ## How It Works
 
 ```
-Fathom meeting ends
-        |
-        v
-[Zapier]   Fathom trigger; "Upload File" action drops a .txt into Dropbox
-        |
-        v
-[Dropbox]  File syncs to ~/Library/CloudStorage/Dropbox/Fathom Meeting Notes/
-        |
-        v
-[launchd]  Polls the inbox every 30 seconds; finds the new .txt
-        |
-        v
-[bash]     Calls AppleScript per file; on success, moves the original to processed/
-        |
-        v
-[AppleScript]  Builds output paths; invokes Python; fires a notification
-        |
-        v
-[Python]   Strips links, removes bold, reorders sections, writes the .md
-        |
-        v
-[iCloud]   .md lands in ~/Library/Mobile Documents/com~apple~CloudDocs/SPINS/_INBOX/
+1. Fathom meeting ends
+2. Zapier
+    a. Trigger for new Fathom meeting recording fires
+    b. Gets AI summary notes from most recent Fathom meeting
+    c. Creates a new .txt file with AI summary notes in file body and title as `YYYY-MM-DD {Meeting Name}`
+    d. New file saved to Fathom Meeting Notes folder in Dropbox
+3. Dropbox
+    a. Files sync to CALIK-M2 at `~/Library/CloudStorage/Dropbox/Fathom Meeting Notes/`
+4. launchd
+    a. Polls the Fathom Meeting Notes folder every 30 seconds watching for new files
+    b. Finds newly uploaded .txt file of meeting notes and calls the AppleScript with the file path
+5. AppleScript
+    a. Builds destination output path 
+    b. Calls helper Python script for proper formatting
+6. Python
+    1. Formats meeting notes (strips markdown links, removes bold, reorders sections, saves as .md)
+    2. Saves formatted file to destination output (`/Users/ckasten/Library/Mobile\ Documents/com\~apple\~CloudDocs/SPINS/_INBOX`)
+7. launchd
+    a. Upon successful completion of formatting scripts, moves the original .txt file to `~/Library/CloudStorage/Dropbox/Fathom Meeting Notes/processed` (so that the notes aren’t processed twice)
 ```
 
 ## Zapier Setup
