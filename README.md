@@ -25,7 +25,7 @@ Fathom exports meeting summaries as raw text full of markdown timestamp links, i
 Clone the repo and run the installer:
 
 ```
-git clone https://github.com/<your-username>/fathom-notes-pipeline.git
-cd fathom-notes-pipeline
+git clone https://github.com/calikasten/format-fathom-meeting-notes.git
+cd format-fathom-meeting-notes
 ./install.sh
 ```
