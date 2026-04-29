@@ -1,5 +1,5 @@
 # Format Fathom Meeting Notes
-Automate the path from a Fathom meeting summary to a clean markdown note. Last Updated 04/29/2026.
+With the help of a Zapier, automatically create a markdown file in the desired format and move it to the desired directory. Last Updated 04/29/2026.
 
 ## What It Does
 
