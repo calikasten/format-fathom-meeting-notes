@@ -1,5 +1,5 @@
 # Format Fathom Meeting Notes
-With the help of a Zapier, automatically create a markdown file in the desired format and move it to the desired directory. Last Updated 04/29/2026.
+Watches Dropbox for raw Fathom meeting summaries dropped by Zapier, reformats them into clean markdown, and saves the result to the desired directory. Last Updated 04/29/2026.
 
 ## What It Does
 
